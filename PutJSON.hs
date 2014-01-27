@@ -13,7 +13,7 @@ renderJValue JNull          = "null"
 
 renderJValue (JObject o)    = "{" ++ pairs o ++ "}"
     where pairs [] = ""
-          paris ps = intercalate ", " (map renderPair ps)
+          pairs ps = intercalate ", " (map renderPair ps)
           renderPair (k,v)  = show k ++ ": " ++ renderJValue v
 
 renderJValue (JArray a)     = "[" ++ values a ++ "]"
@@ -22,3 +22,5 @@ renderJValue (JArray a)     = "[" ++ values a ++ "]"
 
 putJValue :: JValue -> IO ()
 putJValue v = putStrLn (renderJValue v)
+
+bv = JObject [("holla", JNumber 2.4), ("lulu", JBool True)]
